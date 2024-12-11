@@ -13,7 +13,7 @@ const Signup = () => {
   const navigate=useNavigate()
 
   const handleSignIn = async () => {
-    navigate('/')
+    navigate('/home')
   };
 
   return (
@@ -26,7 +26,7 @@ const Signup = () => {
         <div className="body flex column a-center j-center">
           <div className="text flex column">
             <h1>Unlimited movies, Tv shows and more</h1>
-            <h4>Watch anywhere, Cancel anytime.</h4>
+            <h4>Starts at USD 2.99. Cancel anytime.</h4>
             <h6>
               Ready to watch? Enter your email to create or restart membership
             </h6>
