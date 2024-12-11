@@ -1,9 +1,116 @@
-import React from 'react'
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import logo from "../assets/logo.png";
+import { FaPowerOff, FaSearch } from "react-icons/fa";
 
-const NavBar = () => {
+const NavBar = ({ isScrolled }) => {
+  const [showSearch, setShowSearch] = useState(false);
+
   return (
-    <div>NavBar</div>
-  )
-}
+    <div
+      style={{
+        position: "absolute",
+        top: 0,
+        backgroundColor: isScrolled ? "transparent" : "black",
+        zIndex: 2,
+        padding: "0 4rem",
+        transition: "0.3s ease-in-out",
+        width:"100%",
+        height: "6.5rem",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <img src={logo} alt="Logo" style={{ height: "4rem" }} />
+        </div>
+        <ul style={{ display: "flex", listStyleType: "none", gap: "2rem" }}>
+          <li>
+            <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link to="/tv" style={{ color: "white", textDecoration: "none" }}>
+              TV Shows
+            </Link>
+          </li>
+          <li>
+            <Link to="/movies" style={{ color: "white", textDecoration: "none" }}>
+              Movies
+            </Link>
+          </li>
+          <li>
+            <Link to="/mylist" style={{ color: "white", textDecoration: "none" }}>
+              My List
+            </Link>
+          </li>
+        </ul>
+      </div>
+      <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+        <div
+          style={{
+            display: "flex",
+            gap: "0.4rem",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "0.2rem",
+            paddingLeft: "0.5rem",
+            ...(showSearch && {
+              border: "1px solid white",
+              backgroundColor: "rgba(0, 0, 0, 0.6)",
+            }),
+          }}
+        >
+          <button
+            onFocus={() => setShowSearch(true)}
+            onBlur={() => setShowSearch(false)}
+            style={{
+              backgroundColor: "transparent",
+              border: "none",
+              cursor: "pointer",
+            }}
+          >
+            <FaSearch style={{ color: "white", fontSize: "1.2rem" }} />
+          </button>
+          <input
+            type="text"
+            placeholder="Search"
+            onBlur={() => setShowSearch(false)}
+            style={{
+              width: showSearch ? "100%" : "0",
+              opacity: showSearch ? 1 : 0,
+              visibility: showSearch ? "visible" : "hidden",
+              transition: "0.3s ease-in-out",
+              backgroundColor: "transparent",
+              border: "none",
+              color: "white",
+              padding: showSearch ? "0.3rem" : "0",
+            }}
+          />
+        </div>
+        <button
+          style={{
+            backgroundColor: "transparent",
+            border: "none",
+            cursor: "pointer",
+            color:"white"
+          }}
+        >
+          Sign out
+          {/* <FaPowerOff style={{ color: "#f34242", fontSize: "1.2rem" }} /> */}
+        </button>
+      </div>
+    </div>
+  );
+};
 
-export default NavBar
+export default NavBar;
