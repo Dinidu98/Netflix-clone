@@ -17,7 +17,7 @@ const Header = (props) => {
         <img src={logo} alt="logo" style={{ height: '100%' }} />
       </div>
       <button
-        onClick={() => navigate(props.login ? '/login' : '/signup')}
+        onClick={() => navigate(props.login ? '/login' : '/')}
         style={{
           padding: '0.5rem 1rem',
           backgroundColor: '#e50914',
