@@ -21,7 +21,6 @@ export const getGenres = createAsyncThunk("netflix/genres", async () => {
 });
 
 const createArrayFromRawData = (array, moviesArray, genres) => {
-  
   array.forEach((movie) => {
     const movieGenres = [];
     movie.genre_ids.forEach((genre) => {
@@ -80,6 +79,7 @@ const NetflixSlice = createSlice({
       });
   },
 });
+
 
 export const store = configureStore({
   reducer: {

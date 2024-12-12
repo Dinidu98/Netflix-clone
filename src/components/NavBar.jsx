@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
-import { FaPowerOff, FaSearch } from "react-icons/fa";
+import {  FaSearch } from "react-icons/fa";
 
 const NavBar = ({ isScrolled }) => {
   const [showSearch, setShowSearch] = useState(false);

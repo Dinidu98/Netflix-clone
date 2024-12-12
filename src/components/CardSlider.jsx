@@ -69,6 +69,7 @@ const Container = styled.div`
       transition: 0.3s ease-in-out;
       svg {
         font-size: 2rem;
+        cursor: pointer;
       }
     }
     .none {
