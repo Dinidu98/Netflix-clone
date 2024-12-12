@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { IoPlayCircleSharp } from "react-icons/io5";
@@ -6,13 +6,46 @@ import { RiThumbUpFill, RiThumbDownFill } from "react-icons/ri";
 import { BiChevronDown } from "react-icons/bi";
 import { BsCheck } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
-// import video from '../assets/video.mp4'
+import axios from "axios";
 
 const Card = ({ movieData, isLiked = false }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [trailerId, setTrailerId] = useState(null);
   const navigate = useNavigate();
 
-  const youtubeVideoId = "zSWdZVtXT7E";
+  
+
+  const KEY="AIzaSyD1S5_j-_rIeHKIKX0T9sRmvf2YIfL9L9I"
+
+  useEffect(() => {
+    if (isHovered && movieData.name) {
+      const fetchTrailer = async () => {
+        try {
+          const response = await axios.get(
+            `https://www.googleapis.com/youtube/v3/search`,
+            {
+              params: {
+                part: "snippet",
+                q: `${movieData.name} official trailer`,
+                key: KEY,
+                type: "video",
+                maxResults: 1,
+              },
+            }
+          );
+          const videoId = response.data.items[0]?.id?.videoId;
+          setTrailerId(videoId);
+        } catch (error) {
+          console.error("Failed to fetch YouTube trailer:", error);
+        }
+      };
+      fetchTrailer();
+    }
+  }, [isHovered, movieData.name]);
+
+
+
+
 
   return (
     <Container
@@ -34,11 +67,10 @@ const Card = ({ movieData, isLiked = false }) => {
               onClick={()=>navigate("/player")}
               alt={movieData.title || "Movie poster"}
             />
-            {/* <video src={video} autoPlay loop muted onClick={()=>navigate("/player")} /> */}
 
 
             <iframe
-        src={`https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1`}
+        src={`https://www.youtube.com/embed/${trailerId}?autoplay=1`}
         style={{
           width: "100%",
           height: "100%",
@@ -130,8 +162,8 @@ const Container = styled.div`
         position: absolute;
       }
       iframe {
-        width: 100%;
-        height: 140px;
+        width: fit-content;
+        height: fit-content;
         object-fit: cover;
         border-radius: 0.3rem;
         top: 0;
@@ -147,6 +179,7 @@ const Container = styled.div`
       .controls {
         display: flex;
         gap: 1rem;
+        
       }
       svg {
         font-size: 2rem;
