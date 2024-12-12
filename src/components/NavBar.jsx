@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import {  FaSearch } from "react-icons/fa";
 
 const NavBar = ({ isScrolled }) => {
   const [showSearch, setShowSearch] = useState(false);
+  const navigate =useNavigate()
 
   return (
     <div
@@ -34,12 +35,12 @@ const NavBar = ({ isScrolled }) => {
         </div>
         <ul style={{ display: "flex", listStyleType: "none", gap: "2rem" }}>
           <li>
-            <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+            <Link to="/home" style={{ color: "white", textDecoration: "none" }}>
               Home
             </Link>
           </li>
           <li>
-            <Link to="/tv" style={{ color: "white", textDecoration: "none" }}>
+            <Link to="/tvShows" style={{ color: "white", textDecoration: "none" }}>
               TV Shows
             </Link>
           </li>
@@ -104,6 +105,7 @@ const NavBar = ({ isScrolled }) => {
             cursor: "pointer",
             color:"white"
           }}
+          onClick={() => navigate("/")}
         >
           Sign out
           {/* <FaPowerOff style={{ color: "#f34242", fontSize: "1.2rem" }} /> */}

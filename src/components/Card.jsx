@@ -15,33 +15,33 @@ const Card = ({ movieData, isLiked = false }) => {
 
   
 
-  const KEY="AIzaSyD1S5_j-_rIeHKIKX0T9sRmvf2YIfL9L9I"
+  // const KEY="AIzaSyD1S5_j-_rIeHKIKX0T9sRmvf2YIfL9L9I"
 
-  useEffect(() => {
-    if (isHovered && movieData.name) {
-      const fetchTrailer = async () => {
-        try {
-          const response = await axios.get(
-            `https://www.googleapis.com/youtube/v3/search`,
-            {
-              params: {
-                part: "snippet",
-                q: `${movieData.name} official trailer`,
-                key: KEY,
-                type: "video",
-                maxResults: 1,
-              },
-            }
-          );
-          const videoId = response.data.items[0]?.id?.videoId;
-          setTrailerId(videoId);
-        } catch (error) {
-          console.error("Failed to fetch YouTube trailer:", error);
-        }
-      };
-      fetchTrailer();
-    }
-  }, [isHovered, movieData.name]);
+  // useEffect(() => {
+  //   if (isHovered && movieData.name) {
+  //     const fetchTrailer = async () => {
+  //       try {
+  //         const response = await axios.get(
+  //           `https://www.googleapis.com/youtube/v3/search`,
+  //           {
+  //             params: {
+  //               part: "snippet",
+  //               q: `${movieData.name} official trailer`,
+  //               key: KEY,
+  //               type: "video",
+  //               maxResults: 1,
+  //             },
+  //           }
+  //         );
+  //         const videoId = response.data.items[0]?.id?.videoId;
+  //         setTrailerId(videoId);
+  //       } catch (error) {
+  //         console.error("Failed to fetch YouTube trailer:", error);
+  //       }
+  //     };
+  //     fetchTrailer();
+  //   }
+  // }, [isHovered, movieData.name]);
 
 
 
@@ -69,7 +69,7 @@ const Card = ({ movieData, isLiked = false }) => {
             />
 
 
-            <iframe
+            {/* <iframe
         src={`https://www.youtube.com/embed/${trailerId}?autoplay=1`}
         style={{
           width: "100%",
@@ -80,7 +80,7 @@ const Card = ({ movieData, isLiked = false }) => {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
         title="Movie"
-      />
+      /> */}
 
 
 
