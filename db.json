@@ -1,0 +1,28 @@
+{
+  "addedMovies": [
+    {
+      "id": "912649",
+      "name": "Venom: The Last Dance",
+      "image": "/3V4kLQg0kSqPLctI5ziYWabAZYF.jpg",
+      "genres": [
+        "Action",
+        "Science Fiction",
+        "Adventure"
+      ]
+    },
+    {
+      "id": "4311",
+      "data": {
+        "id": 845781,
+        "name": "Red One",
+        "image": "/rOmUuQEZfPXglwFs5ELLLUDKodL.jpg",
+        "genres": [
+          "Comedy",
+          "Action",
+          "Fantasy"
+        ]
+      }
+    }
+    
+  ]
+}

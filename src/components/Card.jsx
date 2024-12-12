@@ -1,4 +1,5 @@
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
+// import {useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { IoPlayCircleSharp } from "react-icons/io5";
@@ -7,10 +8,12 @@ import { BiChevronDown } from "react-icons/bi";
 import { BsCheck } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 import axios from "axios";
+import { toast, Toaster } from 'react-hot-toast';
+
 
 const Card = ({ movieData, isLiked = false }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [trailerId, setTrailerId] = useState(null);
+  // const [trailerId, setTrailerId] = useState(null);
   const navigate = useNavigate();
 
   
@@ -44,6 +47,33 @@ const Card = ({ movieData, isLiked = false }) => {
   // }, [isHovered, movieData.name]);
 
 
+  const addToList = async () => {
+  try {
+    // Fetch the existing movies
+    const response = await axios.get("http://localhost:8000/addedMovies");
+    const existingMovies = response.data;
+
+    // Check if the movie already exists
+    const movieExists = existingMovies.some(
+      (movie) => movie.title === movieData.title
+    ); // Replace 'title' with the unique identifier in your movieData
+
+    if (movieExists) {
+      toast.error("Movie already exists in the list!");
+      return;
+    }
+
+    // Add the movie if it doesn't exist
+    await axios.post("http://localhost:8000/addedMovies", { data: movieData });
+    toast.success("Successfully added the movie!");
+  } catch (error) {
+    console.log(error);
+    toast.error("An error occurred while adding the movie.");
+  }
+};
+
+
+
 
 
 
@@ -52,6 +82,10 @@ const Card = ({ movieData, isLiked = false }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
+      <Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
       <img
         src={`https://image.tmdb.org/t/p/w500${movieData.image}`}
         alt="ima"
@@ -103,7 +137,7 @@ const Card = ({ movieData, isLiked = false }) => {
                 {isLiked ? (
                   <BsCheck title="Remove from List" />
                 ) : (
-                  <AiOutlinePlus title="Add to my list" />
+                  <AiOutlinePlus onClick={addToList} title="Add to my list" />
                 )}
               </div>
               <div className="info">
