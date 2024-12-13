@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BsArrowLeft } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Player = () => {
   const navigate = useNavigate();
-  const youtubeVideoId = "zSWdZVtXT7E";
+
+  const location = useLocation();
+  const { trailerId } = location.state || {};
+  const [youtubeVideoId,setYoutubeVideoId]=useState('')
+
+  useEffect(()=>{
+    setYoutubeVideoId(trailerId)
+  },[trailerId])
+
+
+  // const youtubeVideoId = "zSWdZVtXT7E";
 
   return (
     <div
@@ -42,6 +53,7 @@ const Player = () => {
         }}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
+        title="movie"
       />
     </div>
   );

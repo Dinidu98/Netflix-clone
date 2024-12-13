@@ -50,7 +50,7 @@ const NavBar = ({ isScrolled }) => {
             </Link>
           </li>
           <li>
-            <Link to="/mylist" style={{ color: "white", textDecoration: "none" }}>
+            <Link  style={{ color: "white", textDecoration: "none" }}>
               My List
             </Link>
           </li>

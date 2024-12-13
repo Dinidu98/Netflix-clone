@@ -1,0 +1,45 @@
+import React, { useEffect, useState } from "react";
+import NavBar from "../../components/NavBar";
+import { useSelector, useDispatch } from "react-redux";
+import { getMovies, getGenres } from "../../store/store";
+import SelectGenre from "../../components/SelectGenre";
+import Slider from "../../components/Slider";
+import NotAvailable from "../../components/NotAvailable";
+import "./Movies.css"; // Import the CSS file
+
+const Movies = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const genresLoaded = useSelector((state) => state.netflix.genresLoaded);
+  const movies = useSelector((state) => state.netflix.movies);
+  const genres = useSelector((state) => state.netflix.genres);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getGenres());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (genresLoaded) dispatch(getMovies({ genres, type: "movie" }));
+  }, [genresLoaded, genres, dispatch]);
+
+  window.onscroll = () => {
+    setIsScrolled(window.scrollY === 0 ? false : true);
+    return () => (window.onscroll = null);
+  };
+
+  return (
+    <div className="container">
+      <div className="navbar">
+        <NavBar isScrolled={isScrolled} />
+      </div>
+      <div className="data">
+        <SelectGenre genres={genres} type="movie" />
+        {movies.length ? <Slider movies={movies} /> : <NotAvailable />}
+      </div>
+    </div>
+  );
+};
+
+export default Movies;

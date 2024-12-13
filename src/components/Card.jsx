@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import {useEffect} from "react";
+import {useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { IoPlayCircleSharp } from "react-icons/io5";
@@ -13,65 +13,48 @@ import { toast, Toaster } from 'react-hot-toast';
 
 const Card = ({ movieData, isLiked = false }) => {
   const [isHovered, setIsHovered] = useState(false);
-  // const [trailerId, setTrailerId] = useState(null);
+  const [trailerId, setTrailerId] = useState(null);
   const navigate = useNavigate();
 
   
 
-  // const KEY="AIzaSyD1S5_j-_rIeHKIKX0T9sRmvf2YIfL9L9I"
+  const KEY="AIzaSyD1S5_j-_rIeHKIKX0T9sRmvf2YIfL9L9I"
 
-  // useEffect(() => {
-  //   if (isHovered && movieData.name) {
-  //     const fetchTrailer = async () => {
-  //       try {
-  //         const response = await axios.get(
-  //           `https://www.googleapis.com/youtube/v3/search`,
-  //           {
-  //             params: {
-  //               part: "snippet",
-  //               q: `${movieData.name} official trailer`,
-  //               key: KEY,
-  //               type: "video",
-  //               maxResults: 1,
-  //             },
-  //           }
-  //         );
-  //         const videoId = response.data.items[0]?.id?.videoId;
-  //         setTrailerId(videoId);
-  //       } catch (error) {
-  //         console.error("Failed to fetch YouTube trailer:", error);
-  //       }
-  //     };
-  //     fetchTrailer();
-  //   }
-  // }, [isHovered, movieData.name]);
-
-
-  const addToList = async () => {
-  try {
-    // Fetch the existing movies
-    const response = await axios.get("http://localhost:8000/addedMovies");
-    const existingMovies = response.data;
-
-    // Check if the movie already exists
-    const movieExists = existingMovies.some(
-      (movie) => movie.title === movieData.title
-    ); // Replace 'title' with the unique identifier in your movieData
-
-    if (movieExists) {
-      toast.error("Movie already exists in the list!");
-      return;
+  useEffect(() => {
+    if (isHovered && movieData.name) {
+      const fetchTrailer = async () => {
+        try {
+          const response = await axios.get(
+            `https://www.googleapis.com/youtube/v3/search`,
+            {
+              params: {
+                part: "snippet",
+                q: `${movieData.name} official trailer`,
+                key: KEY,
+                type: "video",
+                maxResults: 1,
+              },
+            }
+          );
+          const videoId = response.data.items[0]?.id?.videoId;
+          setTrailerId(videoId);
+        } catch (error) {
+          console.error("Failed to fetch YouTube trailer:", error);
+        }
+      };
+      fetchTrailer();
     }
+  }, [isHovered, movieData.name]);
 
-    // Add the movie if it doesn't exist
-    await axios.post("http://localhost:8000/addedMovies", { data: movieData });
-    toast.success("Successfully added the movie!");
-  } catch (error) {
-    console.log(error);
-    toast.error("An error occurred while adding the movie.");
+
+
+const handleClick = () => {
+  if (trailerId) {
+    navigate("/player", { state: { trailerId } });
+  } else {
+    toast.error("Trailer not available");
   }
 };
-
 
 
 
@@ -103,7 +86,7 @@ const Card = ({ movieData, isLiked = false }) => {
             />
 
 
-            {/* <iframe
+            <iframe
         src={`https://www.youtube.com/embed/${trailerId}?autoplay=1`}
         style={{
           width: "100%",
@@ -114,7 +97,7 @@ const Card = ({ movieData, isLiked = false }) => {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
         title="Movie"
-      /> */}
+      />
 
 
 
@@ -122,7 +105,7 @@ const Card = ({ movieData, isLiked = false }) => {
           </div>
           <div className="info-container">
             <h3 className="name" 
-            onClick={() => navigate("/player")}
+            onClick={handleClick}
             >
               {movieData.name}
             </h3>
@@ -130,14 +113,14 @@ const Card = ({ movieData, isLiked = false }) => {
               <div className="controls flex">
                 <IoPlayCircleSharp
                   title="play"
-                  onClick={() => navigate("/player")}
+                  onClick={handleClick}
                 />
                 <RiThumbUpFill title="Like" />
                 <RiThumbDownFill title="Dislike" />
                 {isLiked ? (
                   <BsCheck title="Remove from List" />
                 ) : (
-                  <AiOutlinePlus onClick={addToList} title="Add to my list" />
+                  <AiOutlinePlus  title="Add to my list" />
                 )}
               </div>
               <div className="info">
