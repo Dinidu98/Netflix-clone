@@ -22,18 +22,18 @@ const CardSlider = ({ data, title }) => {
   }
 
   return (
-    <Container className="flex column" onMouseEnter={()=>setShowControls(true)} onMouseLeave={()=>setShowControls(false)}>
+    <Container  onMouseEnter={()=>setShowControls(true)} onMouseLeave={()=>setShowControls(false)}>
       <h1>{title}</h1>
       <div className="wrapper">
-        <div className={`slider-action left ${!showControls ? "none" :""} flex j-center a-center`}>
+        <div className={`slider-action left ${!showControls ? "none" :""} `}>
         <AiOutlineLeft onClick={() => handleDirection("left")} />
         </div>
-        <div className="flex slider" ref={listRef}>
+        <div className=" slider" ref={listRef}>
       {data.map((movie, index) => {
         return <Card movieData={movie} index={index} key={movie.id} />;
       })}
     </div>
-    <div className={`slider-action right ${!showControls ? "none" :""} flex j-center a-center`}>
+    <div className={`slider-action right ${!showControls ? "none" :""} `}>
         <AiOutlineRight onClick={() => handleDirection("right")} />
         </div>
       </div>
@@ -45,6 +45,8 @@ const CardSlider = ({ data, title }) => {
 export default React.memo(CardSlider);
 
 const Container = styled.div`
+display: flex;
+flex-direction: column;
   gap: 1rem;
   position: relative;
   padding: 2rem 0;
@@ -58,6 +60,7 @@ const Container = styled.div`
       transform: translateX(0px);
       transition: 0.3s ease-in-out;
       margin-left: 50px;
+      display: flex;
     }
     .slider-action {
       position: absolute;
@@ -67,6 +70,10 @@ const Container = styled.div`
       bottom: 0;
       width: 50px;
       transition: 0.3s ease-in-out;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
       svg {
         font-size: 2rem;
         cursor: pointer;

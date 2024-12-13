@@ -5,7 +5,7 @@ import { getMovies, getGenres } from "../../store/store";
 import SelectGenre from "../../components/SelectGenre";
 import Slider from "../../components/Slider";
 import NotAvailable from "../../components/NotAvailable";
-import "./Movies.css"; // Import the CSS file
+import "./Movies.css";
 
 const Movies = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,6 +35,10 @@ const Movies = () => {
         <NavBar isScrolled={isScrolled} />
       </div>
       <div className="data">
+      <h1 style={{
+                marginLeft:"50px",
+                marginBottom:"50px"
+            }}>Movies</h1>
         <SelectGenre genres={genres} type="movie" />
         {movies.length ? <Slider movies={movies} /> : <NotAvailable />}
       </div>
