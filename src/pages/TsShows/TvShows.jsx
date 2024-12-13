@@ -34,9 +34,15 @@ const TvShows = () => {
             <div className="navbar">
                 <NavBar isScrolled={isScrolled} />
             </div>
+            
             <div className="data">
+            <h1 style={{
+                marginLeft:"50px",
+                marginBottom:"50px"
+            }}>Tv Shows</h1>
                 <SelectGenre genres={genres} type="tv" />
                 {movies.length ? <Slider movies={movies} /> : <NotAvailable />}
+                
             </div>
         </div>
     );

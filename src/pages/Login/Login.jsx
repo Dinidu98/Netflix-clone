@@ -20,7 +20,6 @@ const Login = () => {
       <BackgroundImage />
       
       <div className="content">
-        {/* <Header /> */}
         <div className="form-container">
           <h1>Sign In</h1>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -42,7 +41,7 @@ const Login = () => {
             </span>
           </p>
           <p className="recaptcha">
-            This page is protected by Google reCAPTCHA to ensure you're not a bot.{" "}
+            This page is protected by Google reCAPTCHA to ensure you're not a bot.
             <span style={{color:"blue", cursor:"pointer"}}>Learn more.</span>
           </p>
         </div>

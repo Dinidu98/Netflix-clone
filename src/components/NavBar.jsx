@@ -108,8 +108,7 @@ const NavBar = ({ isScrolled }) => {
           onClick={() => navigate("/")}
         >
           Sign out
-          {/* <FaPowerOff style={{ color: "#f34242", fontSize: "1.2rem" }} /> */}
-        </button>
+         </button>
       </div>
     </div>
   );

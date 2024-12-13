@@ -16,7 +16,7 @@ export const getGenres = createAsyncThunk("netflix/genres", async () => {
   const {
     data: { genres },
   } = await axios.get(`${BASE_URL}/genre/movie/list?api_key=${KEY}`);
-//   console.log(genres);
+  // console.log(genres);
   return genres;
 });
 
@@ -60,7 +60,9 @@ export const fetchDataByGenre = createAsyncThunk(
       `${BASE_URL}/discover/${type}?api_key=${KEY}&with_genres=${genre}`,
       genres
     );
+    
     return data
+    ;
   }
 );
 

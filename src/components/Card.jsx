@@ -8,12 +8,12 @@ import { BiChevronDown } from "react-icons/bi";
 import { BsCheck } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 import axios from "axios";
-import { toast, Toaster } from 'react-hot-toast';
 
 
 const Card = ({ movieData, isLiked = false }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [trailerId, setTrailerId] = useState(null);
+  const [errorCard,setErrorCard]=useState(false)
   const navigate = useNavigate();
 
   
@@ -39,7 +39,7 @@ const Card = ({ movieData, isLiked = false }) => {
           const videoId = response.data.items[0]?.id?.videoId;
           setTrailerId(videoId);
         } catch (error) {
-          console.error("Failed to fetch YouTube trailer:", error);
+          setErrorCard(true)
         }
       };
       fetchTrailer();
@@ -51,8 +51,8 @@ const Card = ({ movieData, isLiked = false }) => {
 const handleClick = () => {
   if (trailerId) {
     navigate("/player", { state: { trailerId } });
-  } else {
-    toast.error("Trailer not available");
+  }else{
+    navigate("/player", { state: { errorCard } });
   }
 };
 
@@ -65,10 +65,7 @@ const handleClick = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <Toaster
-  position="top-center"
-  reverseOrder={false}
-/>
+      
       <img
         src={`https://image.tmdb.org/t/p/w500${movieData.image}`}
         alt="ima"
@@ -109,8 +106,8 @@ const handleClick = () => {
             >
               {movieData.name}
             </h3>
-            <div className="icons flex j-between">
-              <div className="controls flex">
+            <div className="icons">
+              <div className="controls">
                 <IoPlayCircleSharp
                   title="play"
                   onClick={handleClick}
@@ -127,8 +124,8 @@ const handleClick = () => {
               <BiChevronDown title="More Info" />
               </div>
             </div>
-            <div className="genres flex">
-              <ul className="flex">
+            <div className="genres ">
+              <ul >
                 {movieData.genres.map((genre) => (
                   <li key={genre}>{genre}</li>
                 ))}
@@ -193,6 +190,10 @@ const Container = styled.div`
       gap: 0.5rem;
     }
     .icons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      margin-bottom: 10px;
       .controls {
         display: flex;
         gap: 1rem;
@@ -208,8 +209,10 @@ const Container = styled.div`
       }
     }
     .genres {
+      display: flex;
       ul {
         gap: 1rem;
+        display: flex;
         li {
           padding-right: 0.7rem;
           &:first-of-type {
