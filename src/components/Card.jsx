@@ -49,11 +49,7 @@ const Card = ({ movieData, isLiked = false }) => {
 
 
 const handleClick = () => {
-  if (trailerId) {
-    navigate("/player", { state: { trailerId } });
-  }else{
-    navigate("/player", { state: { errorCard } });
-  }
+    navigate("/player", { state: { trailerId, errorCard } });
 };
 
 
