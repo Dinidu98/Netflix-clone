@@ -1,0 +1,45 @@
+.footer-container {
+    background-color: black;
+    color: #757575;
+    padding: 20px 40px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  
+  .footer-questions {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #fff;
+  }
+  
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  
+  .footer-column p {
+    margin: 0;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+    text-align: left;
+    text-decoration: underline;
+  }
+  
+  .footer-column p:hover {
+    color: #fff;
+  }
+  
+  @media (max-width: 768px) {
+    .footer-links {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .footer-links {
+      grid-template-columns: 1fr;
+    }
+  }
+  

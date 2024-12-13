@@ -3,7 +3,7 @@ import background from '../assets/netflix.jpg'
 
 const BackgroundImage = () => {
   return (
-    <div style={{ height: '100vh', width: '100vw' }}>
+    <div style={{ height: '100vh', width: '100vw', }}>
       <img
         src={background}
         alt="BackgroundImg"

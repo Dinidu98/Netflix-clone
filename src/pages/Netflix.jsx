@@ -17,23 +17,31 @@ const Netflix = () => {
   const genresLoaded=useSelector((state)=>state.netflix.genresLoaded)
   const movies =useSelector((state)=>state.netflix.movies)
 
+  const trailerId="zSWdZVtXT7E"
+
 
   const dispatch=useDispatch()
 
   useEffect(()=>{
     dispatch(getGenres())
-  },[])
+  },[dispatch])
 
   useEffect(()=>{
     if(genresLoaded)
       dispatch(getMovies({type:"all"}))
-  },[genresLoaded])
+  },[genresLoaded,dispatch])
 
   window.onscroll = () => {
     setIsScrolled(window.scrollY === 0 ? false : true);
     return () => (window.onscroll = null);
   };
 
+
+  const handleClick = () => {
+    if (trailerId) {
+      navigate("/player", { state: { trailerId } });
+    }
+  };
 
   return (
     <Container>
@@ -57,7 +65,7 @@ const Netflix = () => {
           </div>
           <div className="buttons flex">
             <button
-              onClick={() => navigate("/player")}
+              onClick={handleClick}
               className="flex j-center a-center"
             >
               <FaPlay />
