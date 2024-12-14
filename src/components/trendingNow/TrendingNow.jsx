@@ -15,6 +15,7 @@ const TrendingNow = () => {
   return (
     <div className="trending-container">
       <h1 className="trending-heading">Trending Now</h1>
+      <p style={{display:"none"}}>{hoveredIndex}</p>
 
       <div className="trending-movies">
         {movies.slice(0, 6).map((movie, index) => (
