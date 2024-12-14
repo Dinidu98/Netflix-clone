@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css"; 
 import BackgroundImage from "../../components/BackgroundImage";
-import Header from "../../components/Header";
+import Header from "../../components/header/Header";
 
 const Login = () => {
   const navigate = useNavigate();

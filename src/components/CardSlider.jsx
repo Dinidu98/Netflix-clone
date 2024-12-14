@@ -1,5 +1,5 @@
 import React, { useRef,useState } from "react";
-import Card from "./Card";
+import Card from "../components/card/Card";
 import styled from "styled-components";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 

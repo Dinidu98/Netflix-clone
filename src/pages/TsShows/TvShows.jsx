@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import NavBar from "../../components/NavBar";
+import NavBar from "../../components/navbar/NavBar";
 import { useSelector, useDispatch } from "react-redux";
 import { getMovies, getGenres } from "../../store/store";
 import SelectGenre from "../../components/SelectGenre";
@@ -31,9 +31,7 @@ const TvShows = () => {
 
     return (
         <div className="container">
-            <div className="navbar">
                 <NavBar isScrolled={isScrolled} />
-            </div>
             
             <div className="data">
             <h1 style={{
