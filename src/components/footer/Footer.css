@@ -1,7 +1,7 @@
 .footer-container {
     background-color: black;
     color: #757575;
-    padding: 20px 40px;
+    padding: 50px 40px;
     font-size: 14px;
     line-height: 1.6;
   }
@@ -9,8 +9,11 @@
   .footer-questions {
     margin-bottom: 20px;
     font-size: 16px;
+    margin-left: 5%;
     color: #fff;
   }
+
+
   
   .footer-links {
     display: grid;
@@ -19,7 +22,7 @@
   }
   
   .footer-column p {
-    margin: 0;
+    margin-left: 20%;
     margin-bottom: 10px;
     cursor: pointer;
     transition: color 0.2s ease-in-out;

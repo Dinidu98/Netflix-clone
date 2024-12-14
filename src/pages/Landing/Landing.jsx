@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import BackgroundImage from "../../components/BackgroundImage";
 import Header from "../../components/Header";
 import "./Landing.css";
+import TrendingNow from "../../components/TrendingNow";
 
 const Landing = () => {
   const [formValues, setFormValues] = useState({
@@ -42,8 +43,11 @@ const Landing = () => {
               Get Started
             </button>
           </div>
+          
         </div>
+        
       </div>
+      <TrendingNow/>
     </div>
   );
 };

@@ -72,4 +72,116 @@
   button:hover {
     background-color: #b30a13;
   }
+
+
+  @media (max-width: 480px) {
+    .contentSignup {
+      grid-template-rows: 25vh 75vh;
+    }
   
+    .text h1 {
+      padding: 0 1rem;
+      font-size: 1.4rem;
+    }
+  
+    .form {
+      width: 90%;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .form input {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1rem;
+    }
+  
+    .form button {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.2rem;
+    }
+  }
+  
+  
+  @media (max-width: 600px) {
+    .contentSignup {
+      grid-template-rows: 20vh 80vh;
+    }
+  
+    .text h1 {
+      padding: 0 2rem;
+      font-size: 1.6rem;
+    }
+  
+    .form {
+      width: 80%;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .form input {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.1rem;
+    }
+  
+    .form button {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.2rem;
+    }
+  }
+  
+  
+  
+
+  @media (max-width: 768px) {
+    .contentSignup {
+      grid-template-rows: 20vh 80vh;
+    }
+  
+    .text h1 {
+      padding: 0 5rem;
+      font-size: 1.8rem;
+    }
+  
+    .form {
+      width: 80%;
+      flex-direction: column;
+    }
+  
+    .form input {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.1rem;
+    }
+  
+    .form button {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.2rem;
+    }
+  }
+
+
+  @media (min-width: 1024px) {
+    .text h1 {
+      padding: 0 25rem;
+      font-size: 2.5rem;
+    }
+  
+    .form {
+      width: 50%;
+    }
+  
+    .form input {
+      width: 70%;
+      font-size: 1.2rem;
+    }
+  
+    .form button {
+      width: 40%;
+      font-size: 1.05rem;
+    }
+  }
