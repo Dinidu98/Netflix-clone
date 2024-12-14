@@ -7,7 +7,7 @@ import { BiChevronDown } from "react-icons/bi";
 import { BsCheck } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 import axios from "axios";
-import "./styles/Card.css"
+import "./Card.css"
 
 
 const Card = ({ movieData, isLiked = false }) => {

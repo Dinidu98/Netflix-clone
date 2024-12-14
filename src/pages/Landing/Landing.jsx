@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BackgroundImage from "../../components/BackgroundImage";
-import Header from "../../components/Header";
+import Header from "../../components/header/Header";
 import "./Landing.css";
-import TrendingNow from "../../components/TrendingNow";
+import TrendingNow from "../../components/trendingNow/TrendingNow";
 
 const Landing = () => {
   const [formValues, setFormValues] = useState({
