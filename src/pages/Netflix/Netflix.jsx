@@ -17,6 +17,7 @@ const Netflix = () => {
   const trailerId = "zSWdZVtXT7E";
   const dispatch = useDispatch();
 
+
   useEffect(() => {
     dispatch(getGenres());
   }, [dispatch]);
@@ -26,15 +27,15 @@ const Netflix = () => {
   }, [genresLoaded, dispatch]);
 
   window.onscroll = () => {
-    setIsScrolled(window.scrollY === 0 ? true : false);
-    return () => (window.onscroll = null);
+    setIsScrolled(window.scrollY > 0);
+    return;
   };
 
-  const handleClick = () => {
-    if (trailerId) {
-      navigate("/player", { state: { trailerId } });
-    }
+  const handleNavigate = () => {
+    navigate("/player", { state: { trailerId } });
   };
+
+
 
   return (
     <div className="container">
@@ -53,14 +54,15 @@ const Netflix = () => {
               <br />a group of astronauts travels through a wormhole in search
               of <br />
               another inhabitable planet.
+              
             </p>
           </div>
           <div className="buttons">
-            <button onClick={handleClick} >
+            <button onClick={handleNavigate}>
               <FaPlay />
               Play
             </button>
-            <button >
+            <button>
               <AiOutlineInfoCircle />
               More Info
             </button>
