@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BackgroundImage from "../../components/BackgroundImage";
 import Header from "../../components/Header";
-import "./Signup.css";
+import "./Landing.css";
 
-const Signup = () => {
+const Landing = () => {
   const [formValues, setFormValues] = useState({
     email: "",
   });
@@ -48,4 +48,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Landing;

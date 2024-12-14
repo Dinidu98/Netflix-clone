@@ -10,14 +10,14 @@ const NavBar = ({ isScrolled }) => {
   return (
     <div
       style={{
-        position: "absolute",
+        position: "fixed",
         top: 0,
-        backgroundColor: isScrolled ? "transparent" : "black",
+        backgroundColor: isScrolled ? "black" : "transparent",
         zIndex: 2,
         padding: "0 4rem",
         transition: "0.3s ease-in-out",
         width:"100%",
-        height: "6.5rem",
+        height: "5rem",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
