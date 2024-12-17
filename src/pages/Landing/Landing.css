@@ -24,9 +24,10 @@
   .text {
     gap: 1rem;
     text-align: center;
-    font-size: 2rem;
+    font-size: 200%;
     flex-direction: column;
     display: flex;
+    width: 100%;
   }
   
   .text h1 {
@@ -78,10 +79,13 @@
     .contentSignup {
       grid-template-rows: 25vh 75vh;
     }
+
+    .text{
+      background-color: #370ab3;
+    }
   
     .text h1 {
       padding: 0 1rem;
-      font-size: 1.4rem;
     }
   
     .form {
@@ -108,10 +112,12 @@
     .contentSignup {
       grid-template-rows: 20vh 80vh;
     }
+    .text{
+      background-color: #0ab32f;
+    }
   
     .text h1 {
       padding: 0 2rem;
-      font-size: 1.6rem;
     }
   
     .form {
@@ -123,13 +129,11 @@
     .form input {
       width: 100%;
       padding: 1rem;
-      font-size: 1.1rem;
     }
   
     .form button {
       width: 100%;
       padding: 1rem;
-      font-size: 1.2rem;
     }
   }
   
@@ -139,6 +143,10 @@
   @media (max-width: 768px) {
     .contentSignup {
       grid-template-rows: 20vh 80vh;
+    }
+
+    .text{
+      background-color: #47142b;
     }
   
     .text h1 {
@@ -165,7 +173,7 @@
   }
 
 
-  @media (min-width: 1024px) {
+  /* @media (min-width: 1024px) {
     .text h1 {
       padding: 0 25rem;
       font-size: 2.5rem;
@@ -173,6 +181,10 @@
   
     .form {
       width: 50%;
+    }
+
+    .text{
+      background-color: #1eb30a;
     }
   
     .form input {
@@ -184,4 +196,4 @@
       width: 40%;
       font-size: 1.05rem;
     }
-  }
+  } */

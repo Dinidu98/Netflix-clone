@@ -1,41 +1,44 @@
-import React, { useRef,useState } from "react";
+import React, { useRef } from "react";
 import Card from "../components/card/Card";
 import styled from "styled-components";
-import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+// import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 
 const CardSlider = ({ data, title }) => {
 
-  const [showControls,setShowControls]=useState(false)
-  const [sliderPosition,setSliderPosition]=useState(0)
+  // const [showControls,setShowControls]=useState(false)
+  // const [sliderPosition,setSliderPosition]=useState(0)
   const listRef=useRef()
 
-  const handleDirection=(direction)=>{
-    let distance=listRef.current.getBoundingClientRect().x - 70
-    if(direction ==="left" && sliderPosition>0 ){
-      listRef.current.style.transform=`translate(${230 +distance}px)`;
-      setSliderPosition(sliderPosition -1)
-    }if(direction ==="right" && sliderPosition<4 ){
-      listRef.current.style.transform=`translate(${-230 +distance}px)`;
-      setSliderPosition(sliderPosition +1)
-    }
+  // const handleDirection=(direction)=>{
+  //   let distance=listRef.current.getBoundingClientRect().x - 70
+  //   if(direction ==="left" && sliderPosition>0 ){
+  //     listRef.current.style.transform=`translate(${230 +distance}px)`;
+  //     setSliderPosition(sliderPosition -1)
+  //   }if(direction ==="right" && sliderPosition<4 ){
+  //     listRef.current.style.transform=`translate(${-230 +distance}px)`;
+  //     setSliderPosition(sliderPosition +1)
+  //   }
 
-  }
+  // }
 
   return (
-    <Container  onMouseEnter={()=>setShowControls(true)} onMouseLeave={()=>setShowControls(false)}>
+    <Container 
+    //  onMouseEnter={()=>setShowControls(true)} onMouseLeave={()=>setShowControls(false)}
+     >
       <h1>{title}</h1>
       <div className="wrapper">
-        <div className={`slider-action left ${!showControls ? "none" :""} `}>
+
+        {/* <div className={`slider-action left ${!showControls ? "none" :""} `}>
         <AiOutlineLeft onClick={() => handleDirection("left")} />
-        </div>
+        </div> */}
         <div className=" slider" ref={listRef}>
       {data.map((movie, index) => {
         return <Card movieData={movie} index={index} key={movie.id} />;
       })}
     </div>
-    <div className={`slider-action right ${!showControls ? "none" :""} `}>
+    {/* <div className={`slider-action right ${!showControls ? "none" :""} `}>
         <AiOutlineRight onClick={() => handleDirection("right")} />
-        </div>
+        </div> */}
       </div>
     
     </Container>
@@ -45,6 +48,9 @@ const CardSlider = ({ data, title }) => {
 export default React.memo(CardSlider);
 
 const Container = styled.div`
+
+overflow-x: auto; 
+scrollbar-width: none;
 display: flex;
 flex-direction: column;
   gap: 1rem;

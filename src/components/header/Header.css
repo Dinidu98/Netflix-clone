@@ -4,6 +4,7 @@
     justify-content: space-between;
     padding: 0 4rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    width: 100%;
   }
   
   .logo {
@@ -30,7 +31,7 @@
     background-color: #c40812;
   }
   
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     .header-container {
       padding: 1rem;
     }
@@ -59,5 +60,5 @@
       font-size: 0.9rem;
       padding: 0.5rem 0;
     }
-  }
+  } */
   

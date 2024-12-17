@@ -86,7 +86,6 @@ const handleClick = () => {
           width: "100%",
           height: "100%",
           border: "none",
-          
         }}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
