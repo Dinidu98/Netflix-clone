@@ -110,9 +110,7 @@
     .contentSignup {
       grid-template-rows: 20vh 80vh;
     }
-    .text{
-      background-color: #0ab32f;
-    }
+    
   
     .text h1 {
       padding: 0 2rem;
@@ -143,9 +141,7 @@
       grid-template-rows: 20vh 80vh;
     }
 
-    .text{
-      background-color: #47142b;
-    }
+    
   
     .text h1 {
       padding: 0 5rem;
